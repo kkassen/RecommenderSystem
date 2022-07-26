@@ -67,7 +67,6 @@ class RecommenderSystem():
             for i, j in cor.iterrows():
                 if j.loc[b] != 0:
                     # r(NU, i_t) = sum (r(u_i) * sim(NU, u_i) / sum(sim(NU, u_l))
-                    # From the prediction algorithm handout in the assignment instructions
                     r_sim += j.loc[b]*j['correlation']
                     sim += j['correlation']
             if r_sim == 0:
@@ -75,7 +74,6 @@ class RecommenderSystem():
                 pSeries.update(pd.Series([training_data[b].sum()/len(training_data[b])], [b]))
             else:
                 # r(NU, i_t) = sum (r(u_i) * sim(NU, u_i) / sum(sim(NU, u_l))
-                # From the prediction algorithm handout in the assignment instructions
                 pSeries.update(pd.Series([r_sim/sim], [b]))
         return pSeries
 
